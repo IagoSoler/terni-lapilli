@@ -2,7 +2,7 @@
 export async function createUser(nombre_usuario) {
   try {
     const response = await fetch(
-      "/terni-api/api.php?action=create_user",
+      "http://localhost/terni-api/api.php?action=create_user",
       {
         method: "POST",
         headers: {
@@ -26,7 +26,7 @@ export async function createUser(nombre_usuario) {
 //Función para obtener nombre mediante ID:
 export async function getUserById(usuario_id) {
   const response = await fetch(
-    `/terni-api/api.php?action=get_username&usuario_id=${usuario_id}`
+    `http://localhost/terni-api/api.php?action=get_username&usuario_id=${usuario_id}`
   );
   const data = await response.json();
   return data;
@@ -36,7 +36,7 @@ export async function getUserById(usuario_id) {
 export async function createGame(partida_id, jugador_1_id) {
   try {
     const response = await fetch(
-      "/terni-api/api.php?action=create_game",
+      "http://localhost/terni-api/api.php?action=create_game",
       {
         method: "POST",
         headers: {
@@ -76,14 +76,14 @@ export async function createGame(partida_id, jugador_1_id) {
 }
 export async function checkIfExists(partida_id) {
   const response = await fetch(
-    `/terni-api/api.php?action=check_exists&partida_id=${partida_id}`
+    `http://localhost/terni-api/api.php?action=check_exists&partida_id=${partida_id}`
   );
   const data = await response.json();
   return data;
 }
 export async function checkIfFull(partida_id) {
   const response = await fetch(
-    `/terni-api/api.php?action=check_full&partida_id=${partida_id}`
+    `http://localhost/terni-api/api.php?action=check_full&partida_id=${partida_id}`
   );
   const data = await response.json();
   return data;
@@ -91,7 +91,7 @@ export async function checkIfFull(partida_id) {
 // Función para unirse a una partida
 export async function joinGame(partida_id, jugador_2_id) {
   const response = await fetch(
-    "/terni-api/api.php?action=join_game",
+    "http://localhost/terni-api/api.php?action=join_game",
     {
       method: "POST",
       headers: {
@@ -106,7 +106,7 @@ export async function joinGame(partida_id, jugador_2_id) {
 export async function getGameById(partida_id) {
   try {
     const response = await fetch(
-      `/terni-api/api.php?action=get_game&partida_id=${partida_id}`
+      `http://localhost/terni-api/api.php?action=get_game&partida_id=${partida_id}`
     );
 
     if (!response.ok) {
@@ -124,7 +124,7 @@ export async function getGameById(partida_id) {
 // Función para actualizar el estado de la partida
 export async function updateGame(partida_id, posiciones_tablero, turno_actual) {
   const response = await fetch(
-    "/terni-api/api.php?action=update_game",
+    "http://localhost/terni-api/api.php?action=update_game",
     {
       method: "POST",
       headers: {
@@ -140,7 +140,7 @@ export async function updateGame(partida_id, posiciones_tablero, turno_actual) {
 export async function removePlayer(partida_id, player_number) {
   try {
     const response = await fetch(
-      "/terni-api/api.php?action=remove_player",
+      "http://localhost/terni-api/api.php?action=remove_player",
       {
         method: "POST",
         headers: {
@@ -164,7 +164,7 @@ export async function removePlayer(partida_id, player_number) {
 export async function deleteUser(usuario_id) {
   try {
     const response = await fetch(
-      "/terni-api/api.php?action=delete_user",
+      "http://localhost/terni-api/api.php?action=delete_user",
       {
         method: "POST",
         headers: {
@@ -187,7 +187,7 @@ export async function deleteUser(usuario_id) {
 export async function deleteGame() {
   try {
     const response = await fetch(
-      "/terni-api/api.php?action=delete_game",
+      "http://localhost/terni-api/api.php?action=delete_game",
       {
         method: "POST",
         headers: {

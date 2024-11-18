@@ -56,7 +56,7 @@ export const StartMenu = ({
                     }}
                 />
                 <button onClick={handleCreateUser}>
-                    Guardar
+                    Entrar
                 </button>
                 <br />
                 <button className='button--bronze' onClick={()=>setModoSolo(true)} >Probar en modo solitario</button>

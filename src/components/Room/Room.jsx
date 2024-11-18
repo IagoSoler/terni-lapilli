@@ -30,6 +30,9 @@ export const Room = ({ idSala,nombreUsuario,setNombreUsuario,mensaje, setMensaje
                 };
                 setGameData(newData);
                 updatePlayerState(newData);
+            }   else {
+                localStorage.removeItem('idSala');
+                setIdSala('');
             }
         } catch (err) {
             console.error('Error actualizando los datos de la partida');
@@ -49,6 +52,8 @@ export const Room = ({ idSala,nombreUsuario,setNombreUsuario,mensaje, setMensaje
                     updatePlayerState(newData);
                 } else {
                     setError(response.error || 'Error al obtener los datos de la partida');
+                    localStorage.removeItem('idSala');
+                    setIdSala('');
                 }
             } catch (err) {
                 setError('Error al conectar con el servidor');
