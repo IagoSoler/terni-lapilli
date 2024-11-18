@@ -149,7 +149,7 @@ export const Board = ({ gameData, setMensaje, setRefresh, idUsuario, esSuTurno, 
       }
     } else {
       setSelectedSquare(null);
-      setMensajeMovimiento("Escoge una de tus fichas para moverla");
+      setMensajeMovimiento("Escoge una de tus fichas");
     }
   };
 
@@ -260,7 +260,7 @@ export const Board = ({ gameData, setMensaje, setRefresh, idUsuario, esSuTurno, 
     <div className='info__board__wrapper'>
       <h1>{getBoardTitle()}</h1>
 
-      <p>{getBoardMessage()}</p>
+      <p className="message-container">{getBoardMessage()}</p>
       <div className="back__board">
         <div className="board">
           {gameData.posiciones_tablero.map((posicion, index) => (
