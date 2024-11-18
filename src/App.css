@@ -1,17 +1,155 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Importar fuente Trajan Pro si está disponible */
+@import url("https://fonts.cdnfonts.com/css/trajan-pro");
+
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+
+.App {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
   text-align: center;
+  background-image: url("./assets/marbleBackground.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+  color: #2b2b2b; /* Color base para el texto */
+  font-family: "Trajan Pro", "Times New Roman", serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  font-size: 16px;
 }
-button{
-  height: 50px;
+
+/* Estilo para títulos principales con aspecto romano */
+h1,
+h2,
+h3 {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: #343434;
+  text-shadow: -1px -1px 0 #9b9b9b, 2px 2px 3px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+input{
+  font-family: "Trajan Pro", "Times New Roman", serif;
+}
+
+/* Estilo para subtítulos */
+.roman-subtitle {
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: #454545;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto de texto tallado para elementos especiales */
+p,
+span {
+  text-transform: uppercase;
+  color: #2b2b2b;
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.2),
+    1px 1px 1px rgba(0, 0, 0, 0.4), 3px 3px 5px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.2em;
+}
+
+/* Estilo para botones con aspecto romano */
+button {
+  max-height: 50px;
+  height: 5vh;
+  padding: 5px;
   border-radius: 10px;
+  font-weight: bold;
+  font-family: "Trajan Pro", "Times New Roman", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: linear-gradient(to bottom, #c5c5c5, #464646);
+  border: 1px solid #787878;
+  color: #2b2b2b;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
-.header{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  background-color: rgb(150, 89, 89);
+.button--gold{
+  background: linear-gradient(to bottom, #c5c5c5, #9c9b31);
+}
+.button--gold:hover{
+  background: linear-gradient(to bottom, #d5d5d5, #aeb368);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.3);
+
+}
+.button--bronze{
+  background: linear-gradient(to bottom, #c5c5c5, #7a602e);
+}
+.button--bronze:hover{
+  background: linear-gradient(to bottom, #d5d5d5, #96836e);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.3);
+
+}
+button:hover {
+  background: linear-gradient(to bottom, #d5d5d5, #8f8e8e);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  background: linear-gradient(to top, #c5c5c5, #a8a8a8);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(1px);
+}
+
+/* Ajustes responsive para títulos */
+@media screen and (max-width: 768px) {
+  .App {
+    font-size: 10px;
+  }
+  h1 {
+    font-size: 1.8rem;
+    padding: 15px;
+  }
+
+  h2,
+  h3 {
+    font-size: 1.4rem;
+    padding: 12px;
+  }
+
+  button {
+    height: 10vh;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .App {
+    font-size: 8px;
+  }
+  h1 {
+    font-size: 1.5rem;
+    padding: 10px;
+  }
+
+  h2,
+  h3 {
+    font-size: 1.2rem;
+    padding: 8px;
+  }
+
+  p,
+  span {
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+  }
 }

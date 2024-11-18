@@ -1,30 +1,32 @@
-.game-status {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .game-status h1 {
-    margin-bottom: 8px;
-  }
-  
-  .error-title {
-    color: #e74c3c;
-  }
-  
-  .error-message {
-    color: #c0392b;
-  }
-  
-  .info__board__wrapper {
+
+.info__board__wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-  }
+    
+}
+
+.back__board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    max-width: 690px;
+    height: 90vw;
+    max-height: 690px;
+    margin-top: 50px;
+    background-image: url('../../assets/Captura3.png');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
 .board {
     position: relative;
-    width: 600px;
-    height: 600px;
+    width: 85vw;
+    max-width: 600px;
+    height: 85vw;
+    max-height: 600px;
     background-image: url('../../assets/ternaLapilliBoard.png');
     background-size: cover;
     background-position: center;
@@ -32,33 +34,64 @@
 
 .square {
     position: absolute;
-    width: 150px;
-    height: 150px;
+    width: 20vw;
+    max-width: 150px;
+    height: 20vw;
+    max-height: 150px;
     background-color: rgba(0, 0, 0, 0);
     border-radius: 50%;
-    /* Resta la mitad del ancho del círculo para centrarlo en el punto deseado */
     transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
-.square__center{
-    background-color: aqua;
-    width: 50px;
-    height: 50px;
+
+.player__squares {
+    width: 15vw;
+    max-width: 100px;
+    height: 15vw;
+    max-height: 100px;
+    position: relative; /* Añadido */
+    z-index: 2; /* Añadido - asegura que la imagen esté por encima de la sombra */
+    border-radius: 50%;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
+}
+
+.square__center {
+
+     width: 15vw;
+    max-width: 100px;
+    height: 15vw;
+    max-height: 100px;
     border-radius: 25px;
-}
-.yoursquare{
-    background-color: green;
-}
-.rivalsquare{
-    background-color: rgb(146, 1, 1);
-}
-.selectedsquare{
-    width: 120px;
+    position: relative; /* Añadido */
+    z-index: 2; /* Añadido */
 }
 
+
+/* Modificado el sistema de sombra */
+.selectedsquare {
+    position: relative;
+    transform: translate(0%, -90%);
+}
+
+.selectedsquare::before {
+    content: '';
+    position: absolute;
+
+    bottom: -60px; /* Ajustado para posicionar la sombra */
+    width:100%;
+    height: 80%;
+  
+    background: radial-gradient(circle at center,
+                              rgba(0, 0, 0, 0.904) 0%,
+                              rgba(0, 0, 0, 0) 70%);
+    border-radius: 50%;
+    transform: scaleX(1.2);
+    z-index: 1; /* Asegura que la sombra esté por debajo */
+}
+
+/* Posiciones de los cuadrados */
 .pos-0 { top: 18%; left: 20%; }
 .pos-1 { top: 6%; left: 50%; }
 .pos-2 { top: 18%; left: 80%; }
@@ -68,3 +101,20 @@
 .pos-6 { top: 79%; left: 18.5%; }
 .pos-7 { top: 93%; left: 49.5%; }
 .pos-8 { top: 79%; left: 81%; }
+
+@-moz-document url-prefix() {
+    .back__board{
+        max-width: 680px;
+        max-height: 690px;
+        width: 90vw;
+       
+    }
+    .board {
+        max-height: 600px;
+        max-width: 600px;
+        height: 80vw;
+        width: 80vw;
+    }
+}
+
+/* Añadir media queries para ajustar posiciones en pantallas pequeñas */

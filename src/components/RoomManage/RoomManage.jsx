@@ -1,12 +1,13 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import  './RoomManage.css'
 import { createGame } from '../../utils/ApiCalls';
 import { JoinRoom } from './JoinRoom';
 
 export const RoomManage = ({ idUsuario, setIdSala, setError }) => {
 
     function randomCode() {
-        const caracteres = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         let codigo = '';
         for (let i = 0; i < 5; i++) {
             const indiceAleatorio = Math.floor(Math.random() * caracteres.length);
@@ -29,17 +30,17 @@ export const RoomManage = ({ idUsuario, setIdSala, setError }) => {
         }
     };
     return (
-        <div>
-            <button onClick={handleCreateGame}>Crear Sala</button>
+        <div className='room__management'>
+            <h2>Crear una nueva sala:</h2>
+            <button className='button--gold' onClick={handleCreateGame}>Crear Sala</button>
             <br />
+            <h2>Unirse a una sala:</h2>
             <JoinRoom
                 setError={setError}
                 idUsuario={idUsuario}
                 setIdSala={setIdSala}
             />
-            <br />
-            <button >Probar en modo solitario</button>
-            <br />
+
         </div>
     )
 }

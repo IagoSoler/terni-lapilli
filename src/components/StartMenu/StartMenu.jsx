@@ -1,5 +1,6 @@
 import React from 'react'
 import { createUser } from '../../utils/ApiCalls';
+import './StartMenu.css'
 
 export const StartMenu = ({
     usuarioEncreación,
@@ -8,7 +9,9 @@ export const StartMenu = ({
     mensaje,
     error,
     setError,
-    setNombreUsuario
+    setNombreUsuario,
+    modoSolo,
+    setModoSolo
 }) => {
     const handleCreateUser = async () => {
         try {
@@ -36,20 +39,28 @@ export const StartMenu = ({
     };
 
     return (
-        <div>
-            <h2>Crear usuario</h2>
+        <div className='startmenu'>
+            <h2>Introduce tu nombre</h2>
             {mensaje && <div>{mensaje}</div>}
             {error && <div>{error}</div>}
-            <div>
+            <div className='startmenu--form'>
                 <input
                     type="text"
                     value={usuarioEncreación}
                     onChange={(e) => setUsuarioEncreación(e.target.value)}
                     placeholder="Escribe un nombre"
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            handleCreateUser();
+                        }
+                    }}
                 />
                 <button onClick={handleCreateUser}>
                     Guardar
                 </button>
+                <br />
+                <button className='button--bronze' onClick={()=>setModoSolo(true)} >Probar en modo solitario</button>
+                <br />
             </div>
         </div>
     )

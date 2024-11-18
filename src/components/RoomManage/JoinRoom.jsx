@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { checkIfFull, checkIfExists, joinGame } from '../../utils/ApiCalls';
 
-export const JoinRoom = ({ setError, idUsuario,setIdSala }) => {
+export const JoinRoom = ({ setError, idUsuario, setIdSala }) => {
     const [idSalaInsertada, setIdSalaInsertada] = useState('');
     const [mostrarInput, setMostrarInput] = useState(false);
     const [message, setMessage] = useState('');
@@ -54,7 +54,7 @@ export const JoinRoom = ({ setError, idUsuario,setIdSala }) => {
         }
     };
     return (
-        <div className="flex flex-col gap-4 items-center">
+        <div className="">
             {!mostrarInput && (
                 <button
                     onClick={mostrarUnirse}
@@ -64,14 +64,19 @@ export const JoinRoom = ({ setError, idUsuario,setIdSala }) => {
             )}
 
             {mostrarInput && (
-                <div >
-                    <div>
+                <div className='join__room' >
+                    <div className='startmenu--form'>
                         <input
                             type="text"
                             value={idSalaInsertada}
                             onChange={(e) => setIdSalaInsertada(e.target.value)}
-                            placeholder="Inserta tu código"
+                            placeholder="Número de sala"
                             disabled={isLoading}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    handleJoinRoom();
+                                }
+                            }}
                         />
                         <button
                             onClick={handleJoinRoom}

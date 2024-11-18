@@ -6,11 +6,7 @@
 
 
 .resetbutton {
-
-
     width: 200px;
     height: 50px;
-
-
-    border: 2px solid black; /* Opcional: para mejor visibilidad */
+    border: 2px solid black;
 }

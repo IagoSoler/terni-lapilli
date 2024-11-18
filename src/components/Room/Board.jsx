@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Board.css';
+import goldCoin from '../../assets/goldCoin.png'
+import silverCoin from '../../assets/silverCoin.png'
 import { updateGame } from '../../utils/ApiCalls';
 export const Board = ({ gameData, setMensaje, setRefresh, idUsuario, esSuTurno, numeroJugador }) => {
   const winningPositions = [
@@ -45,7 +47,7 @@ export const Board = ({ gameData, setMensaje, setRefresh, idUsuario, esSuTurno, 
       }
     }
     if (!esSuTurno) {
-      setMensajeMovimiento("No es tu turno")
+      setMensajeMovimiento("Espera tu turno")
     }
   }, [esSuTurno, gameEnded])
 
@@ -87,11 +89,11 @@ export const Board = ({ gameData, setMensaje, setRefresh, idUsuario, esSuTurno, 
 
   const handleSquareClick = (arrayIndex) => {
     if (!esSuTurno) {
-      setMensajeMovimiento("No es tu turno");
+      setMensajeMovimiento("Espera tu turno");
       return;
     }
     if (!isGameReady) {
-      setMensajeMovimiento("Espera a que se conecte tu oponente");
+      setMensajeMovimiento("Esperando un oponente");
       return
     }
 
@@ -124,7 +126,7 @@ export const Board = ({ gameData, setMensaje, setRefresh, idUsuario, esSuTurno, 
     // Fase de movimiento
     if (currentPosition === numeroJugador && !selectedSquare) {
       setSelectedSquare(arrayIndex);
-      setMensajeMovimiento("Ficha seleccionada. Escoge una posición adyacente para moverla");
+      setMensajeMovimiento("Escoge una posición adyacente");
     } else if (currentPosition === 0 && selectedSquare !== null) {
       if (checkLegality(arrayIndex)) {
         // Simular el movimiento y verificar si resulta en victoria
@@ -213,7 +215,13 @@ export const Board = ({ gameData, setMensaje, setRefresh, idUsuario, esSuTurno, 
     if (!isGameReady) {
       return "Esperando a un oponente";
     }
-    return esSuTurno ? "Tu Turno!" : "Es el turno de tu oponente...";
+    if (!esSuTurno) {
+      if (idUsuario == gameData.jugador_1_id) {
+        return "Turno de " + gameData.jugador_2_nombre;
+      }
+      return "Turno de " + gameData.jugador_1_nombre;
+    }
+    return  "Tu Turno!";
   };
 
   const getBoardMessage = () => {
@@ -224,7 +232,7 @@ export const Board = ({ gameData, setMensaje, setRefresh, idUsuario, esSuTurno, 
       return "Podrás empezar cuando se una un oponente"
     }
     if (!esSuTurno) {
-      return "No es tu turno"
+      return "Espera tu turno"
     }
     if (!mensajeMovimiento) {
       if (esSuTurno) {
@@ -237,23 +245,35 @@ export const Board = ({ gameData, setMensaje, setRefresh, idUsuario, esSuTurno, 
     }
     return mensajeMovimiento
   }
+  const setSquares = (posicion) => {
+    if (posicion == numeroJugador) {
+      return <img alt='GoldCoin' className='player__squares' src={goldCoin} />
+    }
+    if (posicion != 0) {
+      return <img alt='silverCoin' className='player__squares' src={silverCoin} />
+    }
+    return '';
+  }
 
   return (
     <div className='info__board__wrapper'>
       <h1>{getBoardTitle()}</h1>
 
       <p>{getBoardMessage()}</p>
-
-      <div className="board">
-        {gameData.posiciones_tablero.map((posicion, index) => (
-          <div
-            className={`square pos-${index} `}
-            key={`${gameData.id}-${index}`}
-            onClick={() => handleSquareClick(index)}
-          >
-            <div className={`square__center ${getSquareClassName(index, posicion)}`}></div>
-          </div>
-        ))}
+      <div className="back__board">
+        <div className="board">
+          {gameData.posiciones_tablero.map((posicion, index) => (
+            <div
+              className={`square pos-${index} `}
+              key={`${gameData.id}-${index}`}
+              onClick={() => handleSquareClick(index)}
+            >
+              <div className={`square__center ${getSquareClassName(index, posicion)}`}>
+                {setSquares(posicion)}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

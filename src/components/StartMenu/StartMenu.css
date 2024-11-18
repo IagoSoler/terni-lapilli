@@ -1,0 +1,16 @@
+.startmenu{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center ;
+}
+.startmenu--form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+.startmenu--form input {
+    text-align: center; /* Centra el texto del placeholder */
+}

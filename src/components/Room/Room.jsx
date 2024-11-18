@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './Room.css';
-import { deleteGame, getGameById, removePlayer } from '../../utils/ApiCalls';
+import { getGameById } from '../../utils/ApiCalls';
 import { Board } from './Board';
+import { Header } from '../Header/Header';
 
-export const Room = ({ idSala, setMensaje, idUsuario, setIdSala, }) => {
+export const Room = ({ idSala,nombreUsuario,setNombreUsuario,mensaje, setMensaje, idUsuario, setIdSala,setIdUsuario,error,setError }) => {
     const [gameData, setGameData] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
     const [refresh, setRefresh] = useState(true);
     const [numeroJugador, setNumeroJugador] = useState('');
     const [esSuTurno, setEsSuTurno] = useState(false);
@@ -33,34 +33,6 @@ export const Room = ({ idSala, setMensaje, idUsuario, setIdSala, }) => {
             }
         } catch (err) {
             console.error('Error actualizando los datos de la partida');
-        }
-    };
-    const handleRemovePlayer = async (idSala, numeroJugador) => {
-        try {
-            const response = await removePlayer(idSala, numeroJugador);
-            if (response.success) {
-                localStorage.removeItem('idSala');
-                setIdSala('');
-                deleteEmptyGames();
-            } else {
-                console.error('Error al abandonar la partida:', response.error);
-                setError('Error al abandonar la partida');
-            }
-        } catch (err) {
-            console.error('Error al abandonar la partida:', err);
-            setError('Error al abandonar la partida');
-        }
-    };
-    const deleteEmptyGames = async () => {
-        try {
-            const response = await deleteGame();
-            if (!response.success) {
-                console.error('Error al abandonar la partida:', response.error);
-                setError('Error al abandonar la partida');
-            }
-        } catch (err) {
-            console.error('Error al abandonar la partida:', err);
-            setError('Error al abandonar la partida');
         }
     };
 
@@ -114,16 +86,20 @@ export const Room = ({ idSala, setMensaje, idUsuario, setIdSala, }) => {
 
     return (
         <div className='room'>
-            <div className='room--name'>
-                <span >Código de sala: {gameData.id}</span>
-                {/*                 <p>Numero jugador: {numeroJugador}</p>
-                <p>Es tu turno: {esSuTurno ? 'Sí' : 'No'}</p>
-                <p>Jugador 1: {gameData.jugador_1_nombre}</p>
-                <p>Jugador 2: {gameData.jugador_2_nombre || 'Esperando jugador...'}</p>
-                <p>Turno actual: {gameData.turno_actual}</p>
-                <p>Posiciones: {gameData.posiciones_tablero}</p> */}
-                {idSala && <button onClick={() => handleRemovePlayer(idSala, numeroJugador)}>Abandonar partida</button>}
-            </div>
+            <Header
+            gameData={gameData}
+                idUsuario={idUsuario}
+                setIdUsuario={setIdUsuario}
+                nombreUsuario={nombreUsuario}
+                setNombreUsuario={setNombreUsuario}
+                numeroJugador={numeroJugador}
+                mensaje={mensaje}
+                error={error}
+                setError={setError}
+                idSala={idSala}
+                setIdSala={setIdSala}
+            />
+
             <Board
                 gameData={gameData}
                 idUsuario={idUsuario}

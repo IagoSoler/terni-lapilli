@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './App.css'
 import { StartMenu } from './components/StartMenu/StartMenu';
-import { Header } from './components/Header/Header';
+import { closeSession } from './components/Header/headerUtils';
 import { RoomManage } from './components/RoomManage/RoomManage';
 import { Room } from './components/Room/Room';
+import { SoloRoom } from './components/SoloRoom/SoloRoom';
 
 function App() {
   const [nombreUsuario, setNombreUsuario] = useState(() => {
@@ -21,6 +22,7 @@ function App() {
   const [usuarioEncreación, setUsuarioEncreación] = useState('');
   const [mensaje, setMensaje] = useState('');
   const [error, setError] = useState('');
+  const [modoSolo,setModoSolo] = useState(false)
 
   // Efecto para manejar la persistencia del ID de usuario
   useEffect(() => {
@@ -32,7 +34,9 @@ function App() {
       localStorage.removeItem('idSala');
     }
   }, [idUsuario]);
-
+  const handleCloseSession = () => {
+    closeSession(idUsuario, setError, setIdUsuario, setNombreUsuario, setIdSala);
+};
   // Efecto para manejar la persistencia del nombre de usuario
   useEffect(() => {
     if (nombreUsuario) {
@@ -52,18 +56,10 @@ function App() {
 
 
   return (
-    <div className="App">
-      <Header
-        idUsuario={idUsuario}
-        setIdUsuario={setIdUsuario}
-        nombreUsuario={nombreUsuario}
-        setNombreUsuario={setNombreUsuario}
-        mensaje={mensaje}
-        error={error}
-        setError={setError}
-        setIdSala = {setIdSala}
-      />
-      {!nombreUsuario && <StartMenu
+    <div className="App border">
+       {modoSolo && <SoloRoom
+       setModoSolo={setModoSolo}/>}
+      {!nombreUsuario && !modoSolo && <StartMenu
         usuarioEncreación={usuarioEncreación}
         setUsuarioEncreación={setUsuarioEncreación}
         mensaje={mensaje}
@@ -73,7 +69,15 @@ function App() {
         setIdUsuario={setIdUsuario}
         nombreUsuario={nombreUsuario}
         setNombreUsuario={setNombreUsuario}
+        modoSolo={modoSolo}
+        setModoSolo={setModoSolo}
       />}
+        {nombreUsuario && !idSala && <div className='header'>
+          <div className='header--name'>
+                    <span>{nombreUsuario}</span>
+                    <button onClick={handleCloseSession}>Salir</button>
+                </div>
+        </div> }
       {nombreUsuario && !idSala && <RoomManage
         nombreUsuario={nombreUsuario}
         idUsuario={idUsuario}
@@ -82,10 +86,16 @@ function App() {
 
       />}
       {idSala && nombreUsuario && <Room
+      nombreUsuario={nombreUsuario}
+      setNombreUsuario={setNombreUsuario}
       idUsuario={idUsuario}
+      setIdUsuario={setIdUsuario}
       idSala={idSala}
       setIdSala={setIdSala}
+      mensaje={mensaje}
       setMensaje={setMensaje}
+      error={error}
+      setError={setError}
       />}
     </div>
   );
