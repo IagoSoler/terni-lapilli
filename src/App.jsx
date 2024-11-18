@@ -23,6 +23,24 @@ function App() {
   const [mensaje, setMensaje] = useState('');
   const [error, setError] = useState('');
   const [modoSolo,setModoSolo] = useState(false)
+  useEffect(() => {
+    const cleanupStorage = () => {
+      const storedIdSala = localStorage.getItem('idSala');
+      const storedIdUsuario = localStorage.getItem('idUsuario');
+      
+      // Si hay una sala almacenada pero no hay usuario, limpiar todo
+      if ((!storedIdUsuario && storedIdSala) || (!storedIdUsuario)) {
+        localStorage.removeItem('idSala');
+        localStorage.removeItem('idUsuario');
+        localStorage.removeItem('nombreUsuario');
+        setIdSala('');
+        setIdUsuario('');
+        setNombreUsuario('');
+      }
+    };
+
+    cleanupStorage();
+  }, []); // Se ejecuta solo al montar el componente
 
   // Efecto para manejar la persistencia del ID de usuario
   useEffect(() => {
