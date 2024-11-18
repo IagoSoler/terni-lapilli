@@ -43,7 +43,7 @@ export const Board = ({ gameData, setMensaje, setRefresh, idUsuario, esSuTurno, 
       if (!allTokensPlaced) {
         setMensajeMovimiento("Coloca una nueva ficha")
       } else {
-        setMensajeMovimiento("Selecciona una de tus fichas para mover")
+        setMensajeMovimiento("Selecciona una de tus fichas para mover1")
       }
     }
     if (!esSuTurno) {
@@ -194,6 +194,7 @@ export const Board = ({ gameData, setMensaje, setRefresh, idUsuario, esSuTurno, 
 
       const response = await updateGame(gameData.id, newPosiciones, 1);
       if (response.success) {
+        setAllTokensPlaced(false)
         setGameEnded(false)
         setRefresh(prev => !prev);
       } else {
@@ -239,7 +240,7 @@ export const Board = ({ gameData, setMensaje, setRefresh, idUsuario, esSuTurno, 
         if (!allTokensPlaced) {
           return "Selecciona una casilla desocupada para colocar tu ficha"
         } else {
-          return "Selecciona una de tus fichas para mover"
+          return "Selecciona una de tus fichas para mover2"
         }
       }
     }
