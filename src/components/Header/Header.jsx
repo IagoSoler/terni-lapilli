@@ -8,13 +8,12 @@ export const Header = ({ idUsuario, nombreUsuario, setNombreUsuario,numeroJugado
     useEffect(() => {
         getUserName(idUsuario, nombreUsuario, setError, setNombreUsuario);
     }, [idUsuario]);
-
-
+    
     const handleRemovePlayer = async (idSala, numeroJugador) => {
         try {
             const response = await removePlayer(idSala, numeroJugador);
             if (response.success) {
-                localStorage.clear(); 
+                localStorage.removeItem('idSala');
                 setIdSala('');
                 deleteEmptyGames();
             } else {
