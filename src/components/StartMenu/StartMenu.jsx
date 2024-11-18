@@ -1,21 +1,18 @@
 import React from 'react'
 import { createUser } from '../../utils/ApiCalls';
 
-export const StartMenu = ({ 
-    usuarioEncreación, 
-    setUsuarioEncreación, 
-    setIdUsuario, 
-    mensaje, 
-    setMensaje, 
-    error, 
+export const StartMenu = ({
+    usuarioEncreación,
+    setUsuarioEncreación,
+    setIdUsuario,
+    mensaje,
+    error,
     setError,
-    setNombreUsuario 
+    setNombreUsuario
 }) => {
     const handleCreateUser = async () => {
         try {
-            setMensaje('');
             setError('');
-
             if (!usuarioEncreación.trim()) {
                 setError('Por favor, ingresa un nombre de usuario');
                 return;
@@ -25,8 +22,7 @@ export const StartMenu = ({
             if (response.error) {
                 setError(response.error);
             } else {
-                setMensaje(`Usuario creado exitosamente con ID: ${response.user_id}`);
-                // Guardar tanto el ID como el nombre en el estado y localStorage
+
                 setIdUsuario(response.user_id);
                 setNombreUsuario(usuarioEncreación);
                 localStorage.setItem('idUsuario', response.user_id);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { createUser } from './utils/ApiCalls';
+import './App.css'
 import { StartMenu } from './components/StartMenu/StartMenu';
 import { Header } from './components/Header/Header';
 import { RoomManage } from './components/RoomManage/RoomManage';
@@ -49,6 +49,8 @@ function App() {
       localStorage.removeItem('idSala');
     }
   }, [idSala]);
+
+
   return (
     <div className="App">
       <Header
@@ -59,7 +61,6 @@ function App() {
         mensaje={mensaje}
         error={error}
         setError={setError}
-        idSala={idSala}
         setIdSala = {setIdSala}
       />
       {!nombreUsuario && <StartMenu
@@ -76,7 +77,6 @@ function App() {
       {nombreUsuario && !idSala && <RoomManage
         nombreUsuario={nombreUsuario}
         idUsuario={idUsuario}
-        idSala={idSala}
         setIdSala={setIdSala}
         setError={setError}
 

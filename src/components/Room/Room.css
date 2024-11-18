@@ -1,35 +1,16 @@
-.board {
-    position: relative; /* Añadido para ser referencia del botón */
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Añadido para crear un grid de 3 columnas */
-    width: 450px;
-    gap: 10px; /* Espacio entre los cuadrados, opcional */
-}
-.square{
+.room{
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 100px;
-    background-color: black;
+    flex-direction: column;
 }
-.yoursquare{
-    background-color: green;
-}
-.rivalsquare{
-    background-color: rgb(146, 1, 1);
-}
-.selectedsquare{
-    width: 120px;
-}
+
+
 .resetbutton {
-    position: absolute;
-    top: 80%;
-    left: 20%;
-    transform: translate(-50%, -50%);
+
+
     width: 200px;
     height: 50px;
-    z-index: 10; /* Para asegurar que aparezca por encima */
+
 
     border: 2px solid black; /* Opcional: para mejor visibilidad */
 }

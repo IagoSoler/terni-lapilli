@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Room.css';
 import { deleteGame, getGameById, removePlayer } from '../../utils/ApiCalls';
 import { Board } from './Board';
 
@@ -93,7 +94,7 @@ export const Room = ({ idSala, setMensaje, idUsuario, setIdSala, }) => {
     useEffect(() => {
         if (!idSala) return;
         updateGameData();
-        const intervalId = setInterval(updateGameData, 3000);
+        const intervalId = setInterval(updateGameData, 2000);
 
         return () => clearInterval(intervalId);
     }, [idSala, refresh]);
@@ -112,16 +113,16 @@ export const Room = ({ idSala, setMensaje, idUsuario, setIdSala, }) => {
     }
 
     return (
-        <div className="p-4">
-            <h2 className="text-xl font-bold mb-4">Partida: {gameData.id}</h2>
-            <div className="space-y-2">
-                <p>Numero jugador: {numeroJugador}</p>
+        <div className='room'>
+            <div className='room--name'>
+                <span >Código de sala: {gameData.id}</span>
+                {/*                 <p>Numero jugador: {numeroJugador}</p>
                 <p>Es tu turno: {esSuTurno ? 'Sí' : 'No'}</p>
                 <p>Jugador 1: {gameData.jugador_1_nombre}</p>
                 <p>Jugador 2: {gameData.jugador_2_nombre || 'Esperando jugador...'}</p>
                 <p>Turno actual: {gameData.turno_actual}</p>
-                <p>Posiciones: {gameData.posiciones_tablero}</p>
-                {idSala && <button onClick={()=>handleRemovePlayer(idSala, numeroJugador)}>Abandonar partida</button>}
+                <p>Posiciones: {gameData.posiciones_tablero}</p> */}
+                {idSala && <button onClick={() => handleRemovePlayer(idSala, numeroJugador)}>Abandonar partida</button>}
             </div>
             <Board
                 gameData={gameData}

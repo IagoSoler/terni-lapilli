@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { createGame } from '../../utils/ApiCalls';
 import { JoinRoom } from './JoinRoom';
 
-export const RoomManage = ({ idUsuario, idSala, setIdSala,setError }) => {
+export const RoomManage = ({ idUsuario, setIdSala, setError }) => {
 
     function randomCode() {
         const caracteres = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -30,18 +30,16 @@ export const RoomManage = ({ idUsuario, idSala, setIdSala,setError }) => {
     };
     return (
         <div>
-            <div>
-                <button onClick={handleCreateGame}>Crear Sala</button>
-                <br />
-                    <JoinRoom
-                    setError={setError}
-                    idUsuario={idUsuario}
-                    setIdSala={setIdSala}
-                    />
-                <br />
-                <button >Probar en modo solitario</button>
-                <br />
-            </div>
+            <button onClick={handleCreateGame}>Crear Sala</button>
+            <br />
+            <JoinRoom
+                setError={setError}
+                idUsuario={idUsuario}
+                setIdSala={setIdSala}
+            />
+            <br />
+            <button >Probar en modo solitario</button>
+            <br />
         </div>
     )
 }

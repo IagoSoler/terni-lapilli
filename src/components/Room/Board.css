@@ -1,0 +1,70 @@
+.game-status {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .game-status h1 {
+    margin-bottom: 8px;
+  }
+  
+  .error-title {
+    color: #e74c3c;
+  }
+  
+  .error-message {
+    color: #c0392b;
+  }
+  
+  .info__board__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+.board {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    background-image: url('../../assets/ternaLapilliBoard.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.square {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 50%;
+    /* Resta la mitad del ancho del círculo para centrarlo en el punto deseado */
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.square__center{
+    background-color: aqua;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+.yoursquare{
+    background-color: green;
+}
+.rivalsquare{
+    background-color: rgb(146, 1, 1);
+}
+.selectedsquare{
+    width: 120px;
+}
+
+.pos-0 { top: 18%; left: 20%; }
+.pos-1 { top: 6%; left: 50%; }
+.pos-2 { top: 18%; left: 80%; }
+.pos-3 { top: 48%; left: 6%; }
+.pos-4 { top: 48%; left: 49.5%; }
+.pos-5 { top: 48%; left: 93%; }
+.pos-6 { top: 79%; left: 18.5%; }
+.pos-7 { top: 93%; left: 49.5%; }
+.pos-8 { top: 79%; left: 81%; }
