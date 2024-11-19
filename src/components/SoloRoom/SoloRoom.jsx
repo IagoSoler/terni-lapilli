@@ -188,7 +188,8 @@ export const SoloRoom = ({ setModoSolo }) => {
 
       <div className='info__board__wrapper'>
         <h1>{getBoardTitle()}</h1>
-        <p>{getBoardMessage()}</p>
+
+        <p className="message-container">{getBoardMessage()}</p>
         <div className="back__board">
           <div className="board">
             {posicionesTablero.map((posicion, index) => (

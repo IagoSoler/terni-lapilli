@@ -222,7 +222,7 @@ export const Board = ({ gameData, setMensaje, setRefresh, idUsuario, esSuTurno, 
       }
       return "Turno de " + gameData.jugador_1_nombre;
     }
-    return  "Tu Turno!";
+    return "Tu Turno!";
   };
 
   const getBoardMessage = () => {
