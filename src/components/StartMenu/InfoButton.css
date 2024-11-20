@@ -1,0 +1,101 @@
+.info-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  background: linear-gradient(to bottom, #c5c5c5, #464646);
+}
+
+.info-button svg {
+  width: 24px;
+  height: 24px;
+  color: #f8eee2;
+  transition: color 0.2s ease;
+}
+
+.info-button:hover svg {
+  color: #292524;
+}
+
+.info-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
+  border: 1px solid #e7e5e4;
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 90%;
+  width: 500px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.info-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+
+.info-dialog__title {
+  font-family: serif;
+  font-size: 1.5rem;
+  color: #292524;
+  margin: 0 0 1rem;
+}
+
+.info-dialog__content {
+  color: #57534e;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.info-dialog__list {
+  list-style-type: none;
+  font-size: 0.8rem;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.info-dialog__list li {
+  margin: 0.5rem 0;
+}
+
+
+.info-dialog__footer {
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-top: 1.5rem;
+  color: #78716c;
+}
+
+/* Animaciones */
+.info-dialog-enter {
+  opacity: 0;
+  transform: translate(-50%, -48%);
+}
+
+.info-dialog-enter-active {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease-out;
+}
+
+.info-dialog-exit {
+  opacity: 1;
+}
+
+.info-dialog-exit-active {
+  opacity: 0;
+  transform: translate(-50%, -48%);
+  transition: all 0.2s ease-in;
+}

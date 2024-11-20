@@ -1,6 +1,7 @@
 import React from 'react'
 import { createUser } from '../../utils/ApiCalls';
 import './StartMenu.css'
+import InfoButton from './InfoButton';
 
 export const StartMenu = ({
     usuarioEncreación,
@@ -40,6 +41,9 @@ export const StartMenu = ({
 
     return (
         <div className='startmenu'>
+            <h1>Terni Lapilli 
+            </h1>
+            <InfoButton/>
             <h2>Introduce tu nombre</h2>
             {mensaje && <div>{mensaje}</div>}
             {error && <div>{error}</div>}
@@ -59,6 +63,7 @@ export const StartMenu = ({
                     Entrar
                 </button>
                 <br />
+                <h2>o juega en solitario: </h2>
                 <button className='button--bronze' onClick={()=>setModoSolo(true)} >Probar en modo solitario</button>
                 <br />
             </div>

@@ -83,7 +83,7 @@ export const SoloRoom = ({ setModoSolo }) => {
     if (fichaSeleccionadaIndex === null) return false;
     return legalMoves[fichaSeleccionadaIndex].includes(targetIndex);
   };
-
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   const handleSquareClick = (arrayIndex) => {
     if (ganador) {
       setMensajeMovimiento("El juego ha terminado");
@@ -103,9 +103,13 @@ export const SoloRoom = ({ setModoSolo }) => {
       if (currentPosition === 0) {
         const newPosiciones = [...posicionesTablero];
         newPosiciones[arrayIndex] = turno;
-        setPosicionesTablero(newPosiciones);
-        setTurno(prev => prev === "doradas" ? "plateadas" : "doradas");
-        setMensajeMovimiento("Ficha colocada");
+        if (!checkWin(newPosiciones)) {
+          setPosicionesTablero(newPosiciones);
+          setTurno(prev => prev === "doradas" ? "plateadas" : "doradas");
+          setMensajeMovimiento("Ficha colocada");
+        } else {
+          setPosicionesTablero(newPosiciones);
+        }
       } else {
         setMensajeMovimiento("Esa casilla ya está ocupada");
       }
@@ -141,6 +145,8 @@ export const SoloRoom = ({ setModoSolo }) => {
       setMensajeMovimiento("Escoge una de tus fichas para moverla");
     }
   };
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const getSquareClassName = (index, posicion) => {
     let className = '';
