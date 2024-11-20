@@ -8,7 +8,7 @@
   - 👥 Modo Multijugador (en caso de desplegarse en servidor)
   - 🤖 Modo Solitario
 - **Diseño Minimalista**: Interfaz elegante inspirada en la estética romana
-- ** Responsivo**: Adaptado para dispositivos móviles y de escritorio
+- **Diseño Responsivo**: Adaptado para dispositivos móviles y de escritorio
 
 ## 🎯 Reglas del Juego
 1. Cada jugador tiene 3 fichas
@@ -26,7 +26,7 @@
 
 ```bash
 # Clonar el repositorio
-git clone [URL_del_repositorio]
+git clone https://github.com/IagoSoler/terni-lapilli.git
 
 # Navegar al directorio
 cd terni-lapilli
@@ -39,14 +39,14 @@ npm run dev
 ```
 
 ## 📝 Licencia
-[Tipo de licencia]
+MIT License 
 
 ## 👥 Créditos
 - Desarrollado por mi, Iago Soler
-- Basado en el juego romano original Terni Lapilli
+- Basado en el juego romano de Terni Lapilli
 
-## 📧 Pruébalo online:
-- Si mi web está online, podrás probarlo en: https://iagosoler.es/terni/
+## 🌐 Demo
+Prueba el juego online en: [https://iagosoler.es/terni/](https://iagosoler.es/terni/)
 
 ---
 ⭐️ Si te gusta este proyecto, ¡no dudes en darle una estrella!
